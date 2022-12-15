@@ -6,7 +6,7 @@ metadata description = 'ALZ Bicep Module to set up Management Group structure'
 @sys.description('Prefix for the management group hierarchy. This management group will be created as part of the deployment. Default: alz')
 @minLength(2)
 @maxLength(10)
-param parTopLevelManagementGroupPrefix string = 'alz'
+param parTopLevelManagementGroupPrefix string = 'dnoc'
 
 @sys.description('Display name for top level management group. This name will be applied to the management group prefix defined in parTopLevelManagementGroupPrefix parameter. Default: Azure Landing Zones')
 @minLength(2)
@@ -15,10 +15,10 @@ param parTopLevelManagementGroupDisplayName string = 'Azure Landing Zones'
 @sys.description('Optional parent for Management Group hierarchy, used as intermediate root Management Group parent, if specified. If empty, default, will deploy beneath Tenant Root Management Group. Default: Empty String')
 param parTopLevelManagementGroupParentId string = ''
 
-@sys.description('Deploys Corp & Online Management Groups beneath Landing Zones Management Group if set to true. Default: true')
+@sys.description('Deploys Internal & Public Management Groups beneath Landing Zones Management Group if set to true. Default: true')
 param parLandingZoneMgAlzDefaultsEnable bool = true
 
-@sys.description('Deploys Confidential Corp & Confidential Online Management Groups beneath Landing Zones Management Group if set to true. Default: false')
+@sys.description('Deploys Confidential Internal & Confidential Public Management Groups beneath Landing Zones Management Group if set to true. Default: false')
 param parLandingZoneMgConfidentialEnable bool = false
 
 @sys.description('Dictionary Object to allow additional or different child Management Groups of Landing Zones Management Group to be deployed. Default: Empty Object')
@@ -56,21 +56,21 @@ var varLandingZoneMg = {
 
 // Used if parLandingZoneMgAlzDefaultsEnable == true
 var varLandingZoneMgChildrenAlzDefault = {
-  corp: {
-    displayName: 'Corp'
+  internal: {
+    displayName: 'Internal'
   }
-  online: {
-    displayName: 'Online'
+  public: {
+    displayName: 'Public'
   }
 }
 
 // Used if parLandingZoneMgConfidentialEnable == true
 var varLandingZoneMgChildrenConfidential = {
-  'confidential-corp': {
-    displayName: 'Confidential Corp'
+  'confidential-internal': {
+    displayName: 'Confidential Internal'
   }
-  'confidential-online': {
-    displayName: 'Confidential Online'
+  'confidential-public': {
+    displayName: 'Confidential Public'
   }
 }
 

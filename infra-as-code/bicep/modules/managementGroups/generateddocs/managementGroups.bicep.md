@@ -102,10 +102,10 @@ outDecommissionedManagementGroupName | string |
     },
     "parameters": {
         "parTopLevelManagementGroupPrefix": {
-            "value": "alz"
+            "value": "dnoc"
         },
         "parTopLevelManagementGroupDisplayName": {
-            "value": "Azure Landing Zones"
+            "value": "DNOC Landing Zones"
         },
         "parTopLevelManagementGroupParentId": {
             "value": ""
